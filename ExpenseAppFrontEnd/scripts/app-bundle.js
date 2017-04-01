@@ -3,11 +3,21 @@ define('app',["require", "exports"], function (require, exports) {
     Object.defineProperty(exports, "__esModule", { value: true });
     var App = (function () {
         function App() {
+            this.message = "Hello, World" + new Date();
         }
+<<<<<<< HEAD
         App.prototype.configureRounter = function (config, router) {
             config.title = "Expense Manager Application";
             config.map([
                 { route: '', moduleId: 'mainPage', title: "Exspense App - Main Page", name: 'main' }
+=======
+        App.prototype.configureRouter = function (config, router) {
+            config.title = "Expense Manager Application";
+            config.map([
+                { route: '', moduleId: 'home-page', title: "Exspense App - Main Page", name: 'home' },
+                { route: 'home', moduleId: 'home-page', title: "Exspense App - Main Page", name: 'homeexplicit' },
+                { route: 'addExpense', moduleId: './components/add-expense', title: 'Add Expense', name: 'addExpense' }
+>>>>>>> fixroute
             ]);
             this.router = router;
         };
@@ -104,7 +114,11 @@ define('components/add-expense',["require", "exports"], function (require, expor
     exports.AddExpense = AddExpense;
 });
 
+<<<<<<< HEAD
 define('text!app.html', ['module'], function(module) { module.exports = "<template><router-view></router-view></template>"; });
+=======
+define('text!app.html', ['module'], function(module) { module.exports = "<template><p>${message}</p><router-view></router-view></template>"; });
+>>>>>>> fixroute
 define('text!mainPage.html', ['module'], function(module) { module.exports = "<template>${messsage}</template>"; });
 define('text!homePage.html', ['module'], function(module) { module.exports = "<template>${messsage}</template>"; });
 define('text!home-page.html', ['module'], function(module) { module.exports = "<template>${welcomeMessage}</template>"; });
