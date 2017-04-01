@@ -4,6 +4,13 @@ define('app',["require", "exports"], function (require, exports) {
     var App = (function () {
         function App() {
         }
+        App.prototype.configureRounter = function (config, router) {
+            config.title = "Expense Manager Application";
+            config.map([
+                { route: '', moduleId: 'mainPage', title: "Exspense App - Main Page", name: 'main' }
+            ]);
+            this.router = router;
+        };
         return App;
     }());
     exports.App = App;
@@ -41,6 +48,18 @@ define('main',["require", "exports", "./environment"], function (require, export
     exports.configure = configure;
 });
 
+define('mainPage',["require", "exports"], function (require, exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var MainPage = (function () {
+        function MainPage() {
+            this.message = "Hello, World";
+        }
+        return MainPage;
+    }());
+    exports.MainPage = MainPage;
+});
+
 define('resources/index',["require", "exports"], function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
@@ -49,5 +68,45 @@ define('resources/index',["require", "exports"], function (require, exports) {
     exports.configure = configure;
 });
 
-define('text!app.html', ['module'], function(module) { module.exports = "<template></template>"; });
+define('homePage',["require", "exports"], function (require, exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var HomePage = (function () {
+        function HomePage() {
+            this.message = "Hello, World";
+        }
+        return HomePage;
+    }());
+    exports.HomePage = HomePage;
+});
+
+define('home-page',["require", "exports"], function (require, exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var HomePage = (function () {
+        function HomePage() {
+            this.welcomeMessage = "Hello, World";
+        }
+        return HomePage;
+    }());
+    exports.HomePage = HomePage;
+});
+
+define('components/add-expense',["require", "exports"], function (require, exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var AddExpense = (function () {
+        function AddExpense() {
+            this.AddExpenseMessage = "Hello From Add Expense Page";
+        }
+        return AddExpense;
+    }());
+    exports.AddExpense = AddExpense;
+});
+
+define('text!app.html', ['module'], function(module) { module.exports = "<template><router-view></router-view></template>"; });
+define('text!mainPage.html', ['module'], function(module) { module.exports = "<template>${messsage}</template>"; });
+define('text!homePage.html', ['module'], function(module) { module.exports = "<template>${messsage}</template>"; });
+define('text!home-page.html', ['module'], function(module) { module.exports = "<template>${welcomeMessage}</template>"; });
+define('text!components/add-expense.html', ['module'], function(module) { module.exports = "<template><p>${AddExpenseMessage}</p></template>"; });
 //# sourceMappingURL=app-bundle.js.map
